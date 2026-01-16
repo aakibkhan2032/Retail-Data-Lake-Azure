@@ -26,3 +26,6 @@ Olist Brazilian E-Commerce Dataset
 - ETL pipelines using PySpark
 - Delta Lake ACID transactions
 - Data quality checks and validation
+
+## 📘 Documentation
+Detailed project flow and design decisions are available in the `docs` folder.
