@@ -1,0 +1,16 @@
+## Medallion Architecture Overview
+
+This project follows the Medallion Architecture pattern to build a scalable and maintainable data lake.
+
+### Data Flow
+1. Raw e-commerce data is stored in Azure Data Lake Storage.
+2. Bronze layer ingests raw data without transformations.
+3. Silver layer applies data cleaning, validation, and standardization.
+4. Gold layer contains aggregated, analytics-ready datasets.
+5. Data can be queried using Spark SQL or integrated with downstream reporting systems.
+
+### Benefits
+- Improved data quality
+- Separation of concerns
+- Easier debugging and reprocessing
+- Scalable data processing

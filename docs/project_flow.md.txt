@@ -1,0 +1,35 @@
+# Project Flow – Cloud-Based Retail Data Lake
+
+## 1. Data Ingestion
+- Raw e-commerce data is stored in Azure Data Lake Storage (ADLS).
+- Data is ingested into the Bronze layer using PySpark in Azure Databricks.
+- No transformations are applied at this stage to preserve raw data.
+
+## 2. Bronze Layer
+- Stores raw data in Delta format.
+- Acts as a source of truth for downstream processing.
+- Enables reprocessing and auditing if business logic changes.
+
+## 3. Silver Layer
+- Applies data quality checks such as:
+  - Null value handling
+  - Deduplication using primary keys (order_id)
+- Enforces schema consistency.
+- Produces cleaned and standardized datasets.
+
+## 4. Gold Layer
+- Contains aggregated and analytics-ready data.
+- Optimized for reporting and querying.
+- Supports business use cases such as sales analysis and customer insights.
+
+## 5. Data Access
+- Data can be accessed using:
+  - `spark.read.table()` for registered Delta tables
+  - Spark SQL for analytical queries
+- Gold layer data can be integrated with SQL-based reporting systems.
+
+## 6. Technologies Used
+- Azure Data Lake Storage Gen2
+- Azure Databricks
+- PySpark
+- Delta Lake

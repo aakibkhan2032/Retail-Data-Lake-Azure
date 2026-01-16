@@ -1,0 +1,16 @@
+## Dataset Information
+
+**Dataset Name:** Olist Brazilian E-Commerce Dataset
+
+**Source:** Public e-commerce dataset (Kaggle)
+
+**Description:**
+This dataset contains order, customer, seller, product, and payment information from a Brazilian e-commerce platform.
+
+**Data Storage Strategy:**
+- Raw data is stored in Azure Data Lake Storage (ADLS)
+- Data is ingested into the Bronze layer without modification
+- Processed data is stored in Silver and Gold layers in Delta format
+
+**Note:**
+Raw data files are not included in this repository to follow best practices for data security and repository size management.
