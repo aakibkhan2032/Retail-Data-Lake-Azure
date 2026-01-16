@@ -15,6 +15,8 @@ The project follows the Medallion Architecture:
 - **Bronze Layer**: Raw data ingestion from source files
 - **Silver Layer**: Data cleaning, validation, and transformation
 - **Gold Layer**: Analytics-ready datasets for reporting and insights
+- Refer to the architecture folder for the Medallion Architecture overview of this project.
+
 
 ## 📂 Dataset
 Olist Brazilian E-Commerce Dataset
