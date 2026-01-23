@@ -37,4 +37,5 @@ Detailed project flow and design decisions are available in the `docs` folder.
   - 01_silver_orders
   - 02_silver_order_items
   - 03_silver_order_payments
- 
+#Synopsis
+ -Project Synopsis 
