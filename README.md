@@ -33,9 +33,12 @@ Detailed project flow and design decisions are available in the `docs` folder.
 #Notebooks
 - Bronze
   - 01_bronze_olist_ingestion
-- silver
+- Silver
   - 01_silver_orders
   - 02_silver_order_items
-  - 03_silver_order_payments
+  - 03_silver_payments
+  - 04_silver_order_reviews
+ -Sql
+  - sql_register_tables
 #Synopsis
  -Project Synopsis 
