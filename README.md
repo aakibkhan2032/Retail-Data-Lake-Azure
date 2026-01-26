@@ -44,7 +44,9 @@ Detailed project flow and design decisions are available in the `docs` folder.
 - Gold
   - 01_fact_orders
   - 02_dim_date
- -Sql
+  - 03_dim_customers
+  - 04_dim_products
+- Sql
   - sql_register_tables
-#Synopsis
+- Synopsis
  -Project Synopsis 
