@@ -46,7 +46,7 @@ Detailed project flow and design decisions are available in the `docs` folder.
   - 02_dim_date
   - 03_dim_customers
   - 04_dim_products
- -Sql
+- Sql
   - sql_register_tables
 #Synopsis
  -Project Synopsis 
