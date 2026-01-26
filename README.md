@@ -30,7 +30,7 @@ Olist Brazilian E-Commerce Dataset
 ## 📘 Documentation
 Detailed project flow and design decisions are available in the `docs` folder.
 
-#Notebooks
+## Notebooks
 - Bronze
   - 01_bronze_olist_ingestion
 - Silver
@@ -46,7 +46,12 @@ Detailed project flow and design decisions are available in the `docs` folder.
   - 02_dim_date
   - 03_dim_customers
   - 04_dim_products
+  - 05_dim_sellers
+  - 06_fact_order_items
+  - 07_fact_payments
+  - 08_fact_order_reviews
 - Sql
   - sql_register_tables
-- Synopsis
- -Project Synopsis 
+
+## Synopsis
+  - Project Synopsis 
