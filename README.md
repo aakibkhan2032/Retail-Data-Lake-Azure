@@ -1,57 +1,130 @@
-# Cloud-Based Retail Data Lake on Azure
+# Cloud-Based Retail Analytics Platform (Medallion Architecture)
 
 ## 📌 Project Overview
-This project demonstrates the design and implementation of a scalable cloud-based data lake using Azure and Databricks to process retail e-commerce data.
+This project implements an **end-to-end cloud data engineering pipeline** using **Azure Databricks, ADLS Gen2, Delta Lake, and MS SQL Server** based on the **Medallion Architecture (Bronze → Silver → Gold)**.
 
-## 🛠 Tech Stack
-- Azure Data Lake Storage Gen2
+The pipeline processes the **Olist Brazilian E-Commerce Dataset** to produce **analytics-ready fact and dimension tables**, which are finally consumed in **Microsoft SQL Server** for reporting and analysis.
+
+The project emphasizes **data quality, scalability, analytics modeling, and cost optimization**, closely following real-world data engineering best practices.
+
+---
+
+## 🏗️ Architecture Overview
+---
+
+## 📂 Data Source
+- **Dataset:** Olist Brazilian E-Commerce Dataset  
+- **Format:** CSV  
+- **Domain:** Retail / E-Commerce  
+
+---
+
+## 🔄 Project Flow
+
+### 1️⃣ Data Ingestion (Raw Layer)
+- Raw CSV files are stored in **Azure Data Lake Storage Gen2 (ADLS)**.
+- No transformations are applied.
+- Acts as an immutable backup of the source data.
+
+---
+
+### 2️⃣ Bronze Layer – Raw Delta Storage
+- Raw data is ingested into **Azure Databricks** using **PySpark**.
+- Stored in **Delta Lake format**.
+- Purpose:
+  - Schema enforcement
+  - Data versioning
+  - Reprocessing capability
+
+---
+
+### 3️⃣ Silver Layer – Cleaned & Conformed Data
+- Applies data engineering best practices:
+  - Primary-key based deduplication
+  - Referential integrity checks
+  - Regex-based timestamp validation
+  - Safe casting of data types
+  - Text normalization
+  - Preservation of business-meaningful NULLs
+- Produces clean, standardized Delta tables for each entity.
+
+---
+
+### 4️⃣ Gold Layer – Business & Analytics Model
+- Implements a **Star Schema** optimized for analytics.
+
+#### Fact Tables:
+- `fact_orders`
+- `fact_order_items`
+- `fact_payments`
+
+#### Dimension Tables:
+- `dim_date`
+- `dim_customers`
+- `dim_products`
+- `dim_sellers`
+
+- Clearly defined grain for each fact table
+- Business metrics precomputed for efficient querying
+
+---
+
+### 5️⃣ Serving / Export Layer
+- Gold tables are exported as **CSV files** to an `/export` folder in ADLS.
+- Designed for easy integration with external analytics systems.
+
+---
+
+### 6️⃣ Analytics & Reporting Layer (MS SQL Server)
+- Exported CSVs are loaded into **Microsoft SQL Server (local)**.
+- Star schema is recreated using fact and dimension tables.
+- Analytical SQL views are built for:
+  - Sales analysis
+  - Customer insights
+  - Regional and time-based reporting
+
+---
+
+### 7️⃣ Cost Optimization Strategy
+- Azure Databricks is used as an **ephemeral compute layer**.
+- After Gold export:
+  - Databricks clusters and workspace are deleted
+  - Data remains safely stored in ADLS
+- Ensures minimal cloud cost while preserving data integrity.
+
+---
+
+## 🛠️ Technologies Used
+- Azure Data Lake Storage Gen2 (ADLS)
 - Azure Databricks
 - PySpark
 - Delta Lake
-- MS SQL Server
+- Microsoft SQL Server
+- SQL (Analytical Views)
 
-## 🏗 Architecture
-The project follows the Medallion Architecture:
-- **Bronze Layer**: Raw data ingestion from source files
-- **Silver Layer**: Data cleaning, validation, and transformation
-- **Gold Layer**: Analytics-ready datasets for reporting and insights
-- Refer to the architecture folder for the Medallion Architecture overview of this project.
+---
 
+## ✅ Key Learnings & Outcomes
+- Designed and implemented **Medallion Architecture**
+- Built **production-style fact & dimension models**
+- Applied real-world **data quality checks**
+- Optimized cloud cost by separating **compute and storage**
+- Delivered an **analytics-ready retail data platform**
 
-## 📂 Dataset
-Olist Brazilian E-Commerce Dataset
+---
 
-## 🚀 Key Data Engineering Concepts
-- Medallion Architecture (Bronze–Silver–Gold)
-- ETL pipelines using PySpark
-- Delta Lake ACID transactions
-- Data quality checks and validation
+## 📌 Future Enhancements
+- Automate ingestion using Azure Data Factory
+- Incremental data loading
+- Power BI dashboard integration
+- CI/CD for data pipelines
 
-## 📘 Documentation
-Detailed project flow and design decisions are available in the `docs` folder.
+---
 
-## Notebooks
-- Bronze
-  - 01_bronze_olist_ingestion
-- Silver
-  - 01_silver_orders
-  - 02_silver_order_items
-  - 03_silver_payments
-  - 04_silver_order_reviews
-  - 05_silver_customers
-  - 06_silver_products
-  - 07_silver_sellers
-- Gold
-  - 01_fact_orders
-  - 02_dim_date
-  - 03_dim_customers
-  - 04_dim_products
-  - 05_dim_sellers
-  - 06_fact_order_items
-  - 07_fact_payments
-  - 08_fact_order_reviews
-- Sql
-  - sql_register_tables
+## 👤 Author
+**Aakib Khan**  
+Aspiring Data Engineer  
 
-## Synopsis
-  - Project Synopsis 
+---
+
+⭐ *If you find this project useful, feel free to star the repository!*
