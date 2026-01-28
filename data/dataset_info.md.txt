@@ -1,16 +1,58 @@
-## Dataset Information
+## 📊 Dataset Information
 
-**Dataset Name:** Olist Brazilian E-Commerce Dataset
+### Dataset Name
+**Olist Brazilian E-Commerce Dataset**
 
-**Source:** Public e-commerce dataset (Kaggle)
+### Source
+- Public e-commerce dataset available on **Kaggle**
 
-**Description:**
-This dataset contains order, customer, seller, product, and payment information from a Brazilian e-commerce platform.
+### Description
+The Olist Brazilian E-Commerce Dataset contains real-world transactional data from a Brazilian online marketplace.  
+It includes detailed information related to:
+- Orders
+- Customers
+- Sellers
+- Products
+- Payments
+- Reviews and delivery timelines
 
-**Data Storage Strategy:**
-- Raw data is stored in Azure Data Lake Storage (ADLS)
-- Data is ingested into the Bronze layer without modification
-- Processed data is stored in Silver and Gold layers in Delta format
+This dataset is well-suited for building **analytical data platforms** and simulating real-world retail data engineering use cases.
 
-**Note:**
-Raw data files are not included in this repository to follow best practices for data security and repository size management.
+---
+
+## 🗄️ Data Storage & Management Strategy
+
+- **Raw Layer**
+  - Original CSV files are stored in **Azure Data Lake Storage Gen2 (ADLS)**.
+  - Data is preserved in its original format to maintain traceability and support reprocessing.
+
+- **Bronze Layer**
+  - Raw data is ingested into Azure Databricks and stored in **Delta Lake format**.
+  - No transformations are applied at this stage.
+
+- **Silver Layer**
+  - Cleaned and standardized datasets are produced by applying:
+    - Deduplication
+    - Data validation
+    - Schema enforcement
+    - Type casting and normalization
+
+- **Gold Layer**
+  - Business and analytics-ready datasets are created using a **Star Schema**.
+  - Fact and dimension tables are optimized for reporting and analytical queries.
+
+---
+
+## 🔐 Data Availability Note
+
+- Raw source files are **not included in this repository**.
+- This follows best practices for:
+  - Data security
+  - Licensing compliance
+  - Repository size management
+
+Users can download the dataset directly from Kaggle and reproduce the pipeline using the provided transformation logic.
+
+---
+
+This approach ensures a **clean, reproducible, and production-style data engineering workflow**.
