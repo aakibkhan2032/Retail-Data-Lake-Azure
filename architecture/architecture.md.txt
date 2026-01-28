@@ -1,16 +1,57 @@
-## Medallion Architecture Overview
+## 🏛️ Medallion Architecture Overview
 
-This project follows the Medallion Architecture pattern to build a scalable and maintainable data lake.
+This project follows the **Medallion Architecture** design pattern to build a **scalable, reliable, and analytics-ready data lake**.  
+The architecture organizes data into clearly defined layers, each with a specific responsibility, enabling high data quality and maintainability.
 
-### Data Flow
-1. Raw e-commerce data is stored in Azure Data Lake Storage.
-2. Bronze layer ingests raw data without transformations.
-3. Silver layer applies data cleaning, validation, and standardization.
-4. Gold layer contains aggregated, analytics-ready datasets.
-5. Data can be queried using Spark SQL or integrated with downstream reporting systems.
+---
 
-### Benefits
-- Improved data quality
-- Separation of concerns
-- Easier debugging and reprocessing
-- Scalable data processing
+### 🔄 Data Flow
+
+1. **Raw Layer**
+   - Raw e-commerce CSV data is stored in **Azure Data Lake Storage Gen2 (ADLS)**.
+   - Data is preserved in its original form for traceability and reprocessing.
+
+2. **Bronze Layer**
+   - Raw data is ingested into **Delta Lake** using **Azure Databricks**.
+   - No business transformations are applied.
+   - Acts as the immutable source of truth.
+
+3. **Silver Layer**
+   - Applies data quality and standardization rules:
+     - Deduplication using primary keys
+     - Referential integrity validation
+     - Regex-based timestamp validation and safe casting
+     - Text normalization and NULL handling
+   - Produces clean, consistent, and analysis-ready datasets.
+
+4. **Gold Layer**
+   - Implements a **Star Schema** with fact and dimension tables.
+   - Stores business-level, analytics-ready data.
+   - Optimized for reporting, aggregations, and BI use cases.
+
+5. **Serving & Analytics Layer**
+   - Gold tables are exported as CSV files for downstream consumption.
+   - Data is loaded into **Microsoft SQL Server** for analytical querying and reporting.
+
+---
+
+### ⭐ Key Benefits
+
+- **Improved Data Quality**  
+  Data is validated and standardized before reaching analytics consumers.
+
+- **Clear Separation of Concerns**  
+  Each layer has a single responsibility, simplifying development and maintenance.
+
+- **Ease of Debugging & Reprocessing**  
+  Issues can be traced and fixed at the appropriate layer without impacting others.
+
+- **Scalability & Performance**  
+  Delta Lake enables efficient storage, versioning, and scalable processing.
+
+- **Cost Optimization**  
+  Compute (Databricks) is decoupled from storage and used only when required.
+
+---
+
+This layered approach closely mirrors **real-world enterprise data platforms** and ensures that data is reliable, reusable, and analytics-ready.
