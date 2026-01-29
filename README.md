@@ -82,6 +82,8 @@ The project emphasizes **data quality, scalability, analytics modeling, and cost
   - Sales analysis
   - Customer insights
   - Regional and time-based reporting
+- SQL Queries
+  - Query1
 
 ---
 
