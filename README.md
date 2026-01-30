@@ -57,6 +57,7 @@ The project emphasizes **data quality, scalability, analytics modeling, and cost
 - `fact_orders`
 - `fact_order_items`
 - `fact_payments`
+- `fact_order_reviews`
 
 #### Dimension Tables:
 - `dim_date`
@@ -83,7 +84,9 @@ The project emphasizes **data quality, scalability, analytics modeling, and cost
   - Customer insights
   - Regional and time-based reporting
 - SQL Queries
-  - Query1
+  - staging.dim
+  - staging.fact
+  - dw.dim
 
 ---
 
