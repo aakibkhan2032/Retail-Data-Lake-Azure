@@ -89,7 +89,9 @@ The project emphasizes **data quality, scalability, analytics modeling, and cost
     - `staging.fact`
   - dw
     - `dw.dim`
-    - `dw.fact` 
+    - `dw.fact`
+  - reporting
+    - `reporting.views`
 
 ---
 
