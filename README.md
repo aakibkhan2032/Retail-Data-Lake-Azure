@@ -84,9 +84,12 @@ The project emphasizes **data quality, scalability, analytics modeling, and cost
   - Customer insights
   - Regional and time-based reporting
 - SQL Queries
-  - staging.dim
-  - staging.fact
-  - dw.dim
+  - staging
+    - `staging.dim`
+    - `staging.fact`
+  - dw
+    - `dw.dim`
+    - `dw.fact` 
 
 ---
 
