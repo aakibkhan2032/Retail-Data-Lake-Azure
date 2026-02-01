@@ -92,6 +92,8 @@ The project emphasizes **data quality, scalability, analytics modeling, and cost
     - `dw.fact`
   - reporting
     - `reporting.views`
+  - validation
+    - `validation.queries`
 
 ---
 
