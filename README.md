@@ -133,6 +133,14 @@ The project emphasizes **data quality, scalability, analytics modeling, and cost
 
 ---
 
+## ✅ Report and Documentation
+- Written as a data engineering project
+- Clearly defines scope boundaries
+- Explains why decisions were made, not just what tools were used
+- Structured like a real industry project report, not a tutorial
+
+--
+
 ## 👤 Author
 **Aakib Khan**  
 Aspiring Data Engineer  
