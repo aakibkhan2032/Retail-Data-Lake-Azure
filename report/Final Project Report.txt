@@ -1,0 +1,229 @@
+# Cloud-Based Retail Data Lake & Data Warehouse Project
+
+## 1. Project Title
+
+**Design and Implementation of a Cloud-Based Retail Data Lake and Analytics Data Warehouse using Azure Databricks and SQL Server**
+
+---
+
+## 2. Introduction
+
+In the era of data-driven decision making, organizations require scalable and reliable data platforms to process large volumes of structured and semi-structured data. This project focuses on building an end-to-end cloud-based data engineering pipeline for a retail e-commerce use case using modern data engineering tools and best practices.
+
+The project demonstrates the complete lifecycle of data engineering—from raw data ingestion to analytics-ready data—using Azure Databricks, Azure Data Lake Storage Gen2 (ADLS), Delta Lake, and a dimensional data warehouse modeled in SQL Server.
+
+---
+
+## 3. Dataset Description
+
+**Dataset Name:** Olist Brazilian E-Commerce Dataset
+**Source:** Kaggle (Public Dataset)
+
+The dataset represents a real-world Brazilian e-commerce platform and contains information about:
+
+* Customers
+* Orders
+* Order items
+* Payments
+* Reviews
+* Products
+* Sellers
+
+The dataset is well-suited for analytics use cases such as sales analysis, customer behavior analysis, operational efficiency, and seller performance.
+
+---
+
+## 4. Project Objectives
+
+The main objectives of this project are:
+
+* To design a scalable cloud-based data lake architecture
+* To implement the Medallion Architecture (Bronze, Silver, Gold)
+* To transform raw data into analytics-ready fact and dimension tables
+* To build a star-schema-based data warehouse
+* To ensure data correctness and reliability through validation checks
+* To deliver a reporting-ready layer for BI consumption
+
+---
+
+## 5. System Architecture Overview
+
+The project architecture is divided into two major parts:
+
+### 5.1 Cloud Data Lake Layer
+
+* **Azure Data Lake Storage Gen2** for storing raw and processed data
+* **Azure Databricks** for data processing and transformations
+* **Delta Lake** for ACID transactions and efficient storage
+
+### 5.2 Data Warehouse & Reporting Layer
+
+* **SQL Server** for dimensional data warehouse
+* **Staging schema** for raw CSV ingestion
+* **DW schema** for fact and dimension tables
+* **Reporting schema** for analytics views
+
+---
+
+## 6. Medallion Architecture Implementation
+
+### 6.1 Bronze Layer (Raw Data)
+
+* Raw CSV files ingested from Kaggle
+* No transformations applied
+* Stored as Delta tables
+* Purpose: Data preservation and traceability
+
+### 6.2 Silver Layer (Cleaned Data)
+
+* Data cleansing and standardization
+* Data type corrections
+* Null handling and deduplication
+* Business-level entity separation
+
+### 6.3 Gold Layer (Business-Ready Data)
+
+* Creation of fact and dimension tables
+* Aggregations and business logic applied
+* Analytics-ready datasets exported as CSV files
+
+---
+
+## 7. Data Export and Cost Optimization
+
+After completing the Gold layer:
+
+* All fact and dimension tables were exported as CSV files to an `/export` folder in ADLS
+* Azure Databricks clusters and workspace were deleted to optimize cloud costs
+* Exported data was downloaded locally for further warehouse modeling
+
+This step demonstrates cost-aware cloud architecture practices.
+
+---
+
+## 8. Data Warehouse Design
+
+### 8.1 Database Structure
+
+**Database Name:** RetailAnalytics
+
+**Schemas:**
+
+* `staging` – Raw data loaded from CSV files
+* `dw` – Dimensional data warehouse (star schema)
+* `reporting` – Analytics and reporting views
+
+---
+
+### 8.2 Dimension Tables
+
+* **DimCustomers** – Customer demographic details
+* **DimProducts** – Product attributes
+* **DimSellers** – Seller location information
+* **DimDate** – Date dimension for time-based analysis
+
+Surrogate keys were used for dimensions to improve join performance and enforce warehouse best practices.
+
+---
+
+### 8.3 Fact Tables
+
+Multiple fact tables were designed to represent different business processes:
+
+* **FactOrders** – One row per order
+* **FactOrderItems** – One row per product per order (core sales fact)
+* **FactPayments** – One row per payment transaction
+* **FactOrderReviews** – One row per customer review
+
+All fact tables were designed with clear grain definitions and linked to conformed dimensions.
+
+---
+
+## 9. Data Loading Strategy
+
+* Data was first loaded into the `staging` schema using bulk insert operations
+* Dimension tables were populated before fact tables
+* Fact tables were loaded using surrogate key lookups to ensure referential integrity
+
+This approach mirrors real-world enterprise data warehouse loading patterns.
+
+---
+
+## 10. Data Validation and Quality Checks
+
+To ensure correctness and reliability, multiple validation checks were performed:
+
+* Row count reconciliation between staging and warehouse layers
+* Revenue reconciliation across fact and reporting layers
+* Detection of orphan records and null foreign keys
+* Business logic validation (e.g., delivered vs canceled orders)
+
+These checks ensure trust in analytical results.
+
+---
+
+## 11. Reporting Layer
+
+The reporting layer was implemented using SQL views to abstract complexity and provide business-friendly access.
+
+Examples of reporting views include:
+
+* Monthly revenue trends
+* Order status summary
+* Top products by revenue
+* Average delivery time
+* Payment method distribution
+* Seller review performance
+
+The reporting layer is designed for direct BI tool consumption.
+
+---
+
+## 12. Scope Definition and Boundary Setting
+
+This project intentionally stops at the analytics-ready reporting layer.
+
+Dashboard creation and visualization were kept out of scope to:
+
+* Maintain a clear data engineering focus
+* Reflect real-world role separation between data engineers and BI analysts
+* Avoid overextending responsibilities beyond pipeline ownership
+
+---
+
+## 13. Challenges Faced and Solutions
+
+### Challenges:
+
+* Handling inconsistent data types
+* Managing null and malformed values
+* Designing correct grain for multiple fact tables
+* Cost management of cloud resources
+
+### Solutions:
+
+* Explicit schema definitions and casting
+* Layered transformations using Medallion Architecture
+* Clear dimensional modeling principles
+* Exporting data and deleting cloud resources post-processing
+
+---
+
+## 14. Conclusion
+
+This project successfully demonstrates the design and implementation of a modern data engineering pipeline using cloud-native tools and dimensional modeling principles. It showcases the ability to build scalable, reliable, and analytics-ready data platforms while maintaining clear architectural boundaries and cost awareness.
+
+The project reflects real-world data engineering responsibilities and provides a strong foundation for enterprise analytics.
+
+---
+
+## 15. Future Enhancements (Optional)
+
+* Incremental data loading
+* Streaming data ingestion
+* Automated data quality monitoring
+* Integration with BI tools
+
+---
+
+**End of Report**
