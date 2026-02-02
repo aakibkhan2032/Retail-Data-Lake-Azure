@@ -107,7 +107,7 @@ The project emphasizes **data quality, scalability, analytics modeling, and cost
 ---
 
 ## 🛠️ Technologies Used
-- Azure Data Lake Storage Gen2 (ADLS)
+- Azure Storage (Azure Data Lake Storage Gen2)
 - Azure Databricks
 - PySpark
 - Delta Lake
@@ -139,7 +139,7 @@ The project emphasizes **data quality, scalability, analytics modeling, and cost
 - Explains why decisions were made, not just what tools were used
 - Structured like a real industry project report, not a tutorial
 
---
+---
 
 ## 👤 Author
 **Aakib Khan**  
